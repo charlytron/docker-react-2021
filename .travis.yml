@@ -1,6 +1,11 @@
+language: generic 
+
 sudo: required
 services: 
 - docker
 
 before_install: 
-  - docker build -t charlytron/-f Dockerfile.dev .
+  - docker build -t charlytron/docker-react-2021 -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true charlytron/docker-react-2021 npm run test
